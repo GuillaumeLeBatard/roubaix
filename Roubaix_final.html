@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(82, 82, 82);
+  font-family: Helvetica, sans-serif;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: rgb(39, 38, 38);
+  border: 4px solid #FF9F55;
+  top: 15px;
+  border-radius: 25%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+  .timeline::after {
+  left: 31px;
+  }
+  
+  /* Full-width containers */
+  .container {
+  width: 100%;
+  padding-left: 70px;
+  padding-right: 25px;
+  }
+  
+  /* Make sure that all arrows are pointing leftwards */
+  .container::before {
+  left: 60px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+  left: 15px;
+  }
+  
+  /* Make all right containers behave like the left ones */
+  .right {
+  left: 0%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="timeline">
+  <div class="container left">
+    <div class="content">
+      <h2>La premi&egravere Classique des Hamsters: Paris-Roubaix!</h2>
+      <p>A l’essentiel: comment d&eacutecrire ce que l’on ressent en arpentant à v&eacutelo un des fameux secteurs pav&eacutes du Paris-Roubaix? Nulle lecture ne saurait rendre avec justesse l’excitation qui s’empare du valeureux lanc&eacute sur ces chemins d’un autre temps. Un état d’inqui&eacutetude, comme un tourbillon irr&eacuteversible, qui se comprend finalement lorsque tout s’arrête, quand le ruban d’asphalte lisse vient mettre fin aux tr&eacutepidements irr&eacutepressibles du guidon, quand le vaisseau s’extirpe du chaos et trace sur une mer d’huile. Mais reprenons par le début. </p>     
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="raph_sortie.jpg" style="width:100%">
+    </div>
+  </div>
+  
+  <div class="container left">
+    <div class="content">
+        <h2>On annule? Poisson d'avril!</h2>
+        <p>Le soir précédent pendant le dîner, personne ne fait trop le fier. La météo s’annonce plus que maussade. On s’interroge sur le nombre de voitures suiveuses. Une seule suffira. Car oui, tout le monde a hâte d’en découdre et envie de se frotter à la légende de la Reine des Classiques. Après une nuit trop courte, réveil 5h35, et le petit-déjeuner de l’hôtel avalé, tous les hamsters enthousiastes s’apprêtent dans la fraîcheur de fin de nuit. Le vent a bien sifflé sur les toits cette nuit, la pluie battu les volets, mais l’heure n’est plus au doute. La farandole des phares blancs et rouges s’ébroue sur les pavés luisants du centre de Compiègne, le temps d’immortaliser l’instant. Voilà donc la bande: David, Raph, Vince, Corentin, Guche, Goth, Greg, Grégoire, Baba et Fred qui fend la forêt de Compiègne en attendant le lever du jour, à défaut de lever du soleil… Peu de temps mort cette matinée, les kilomètres défilent à bonne allure, avec une petite poussette du vent. Baba et Fred forment la tête de la comète dont la queue se disloque de temps en temps. Vers Saint-Quentin, un cyclo s’accroche à notre groupe. Benoît, parti comme les pionniers de Paris à 4h du matin pour rallier Roubaix, restera quelques dizaines de kilomètres dans nos roues. Chargé de sacoches sur son gravel, la succession de faux-plats lui fera finalement lâcher prise. Un moment, on attend David dont les mains engourdies ne rentrent plus dans ses gants gorgés d’eau. Tant pis, ce sera sans les gants.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="diner.jpg" style="width:100%" alt="resto de la veille">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="depart.jpg" style="width:100%">
+    </div>
+  </div>
+  
+  <div class="container left">
+    <div class="content">
+        <h2>Avant l'effort, le r&eacuteconfort</h2>
+        <p>Puis à mi-parcours, dans le village de Saint-Aubert, peu avant Denain, à l’heure prédite par le roadbook de Goth (!), il est temps de déjeuner. L’arrière cour du restaurant se mue en vestiaire à ciel ouvert puis on se délasse à la belle tablée dressée à l’intérieur. L’accueil d’Adeline est chaleureux, la nourriture préparée par sa sœur roborative (la tarte au maroilles en entrée connaît un beau succès). Personne n’est pressé d’abréger ce moment de réconfort. Seul hic, les radiateurs ne chauffent pas. Il faut glisser ses chaussettes sèches dans les chaussures trempées et repartir en profitant d’une accalmie qui tiendra à peine plus d’une heure. </p>
+      
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="vestiaire_resto.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="table_resto.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+        <h2>Premier contact avec le pav&eacute</h2>
+        <p>C’était annoncé, cela n’a échappé à personne, les pavés nous attendent dans cinq kilomètres; le secteur de Haspres, non-côté, secteur oublié. Un dépucelage collectif. Nous y voilà déjà, sous l’encadrement d’un pont, un faux plat montant étroit, comme un entonnoir. Chacun l’aborde différemment, certains (moi) avec une ambition vite rabattue, d’autres avec prudence, d’autres encore avec plus d’appréhension subissent chaque rebond. Seul Baptiste arrive à maintenir le rythme sans mollir sur les pavés disjoints, parfois inondés, partout boueux et glissants. C’est le premier des 21 secteurs. Il suffit pour tout comprendre de la suite. </p>
+      
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="haspres.jpg" style="width:100%">
+    </div>
+  </div>
+
+  <div class="container right">
+    <div class="content">
+      <img src="haveluy.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="greg_gregoire_paves.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="guillaume_paves.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="guche_paves.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="raph_paves.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>Petit manuel de flahute</h2>
+      <p>Dans le secteur suivant d’Haveluy à Wallers, on commence à intégrer quelques fondamentaux. Plus on roule vite, moins on subit les chaos, moins on bute sur chaque arête. Facile à dire, mais difficile de se relancer quand on commence à perdre le momentum...  Quant à tenir le haut du pavé, ce n’est pas un choix, juste une obligation, tant la route est bombée et les pavés plantés erratiquement lorsqu’on quitte la ligne de crête. Souvent un peu de terre stagne au milieu dans laquelle s’inscrivent les sillons laissés par les copains, ponctués de touffes d’herbe. </p>
+      
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="greg_paves.jpg" style="width:100%">
+    </div>
+  </div>
+  
+  <div class="container left">
+    <div class="content">
+      <h2>Au nord, c'était les corons...</h2>
+      <p>La trouée d’Arenberg. On l’attendait. On y est. Tout d’abord c’est le chevalement en acier qui nous toise, du haut de son histoire. Combien de gueules noires ont plongé là, dans le puits de la mine? Et en face, tout droit, une brèche rectiligne taillée dans la forêt. Impressionnante. Au silence succède le vacarme des vélos fracassés dans cette impasse. Ne pas écouter le vélo geindre, ne pas s’écouter, écraser les pédales. A chaque choc, la nuque se courbe vers la roue avant, vers le pavé suivant. Repousser son regard au loin. Agripper le guidon pas trop fermement, malgré les chaos qui jettent la roue de droite et de gauche. Écraser les pédales. Encore. Et résister à l’envie d’emprunter le sentier bitumé qui longe de bout en bout le secteur, d’où nous observent quelques randonneurs amusés. C’est long. Ça monte un peu. Mais on en voit le bout, cette barrière, le calme après la tempête. Bilan: une cocotte qui pique du nez et un porte-bidon branlant pour ma part. Une crevaison lente (deux?) pour Baptiste. Et sur tous les visages des sourires, d’autant plus que les maman et belle-maman de David sont là pour nous offrir un café bienvenu et une part de tarte au sucre. Miam! Je vais finir par prendre des kilos sur ce périple! Virage à gauche face au vent et tout le monde repart. La pluie s’invite à nouveau, cinglante. On ne le sait pas encore mais c’est seulement maintenant que l’enfer du nord va prendre toute sa dimension. </p>
+      
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="chevalement_arenberg.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="arenberg.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="david_arenberg.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="greg_arenberg.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="gregoire_arenberg.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="goth_arenberg.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="vince_arenberg.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="baba_arenberg.jpg" style="width:100%">
+    </div>
+</div>
+
+<div class="container right">
+    <div class="content">
+      <img src="tarte_au_sucre.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>Pav&eacute de mauvaises intentions...</h2>
+      <p>Quelques jolis passages, dont le fameux Pont Gibus. Chaque virage est une énigme: la flaque mystère, le talus boueux ou le flanc chaotique avec ses pavés disjoints. A peine quelques kilomètres, la belle roue Corima à batons de Baptiste perd de la pression. Il regonfle, repart, ça ne tient pas. On laisse filer le groupe et répare au bord de la route. Corentin et Vince nous suivent en voiture. Arrive le plus long secteur, Hornaing, 3,7km, 4 étoiles sur 5. On n’amuse pas le terrain pour rattraper le retard. Soudain Baptiste crie derrière moi : «Crevé roue avant!» Scène irréelle, en un clin d’œil, le vélo fait une embardée à 45 degrés sur sa gauche et disparaît avec son pilote en contrebas de la route!</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="pont_gibus.jpg" style="width:100%">
+    </div>
+    </div>
+  <div class="container left">
+    <div class="content">
+      <p>Bon. Pas de panique. S’arrêter sans se mettre au tas avec des freins qui ne freinent plus. Et mesurer l’ampleur des dégâts. Un large fossé de 3 mètres de profondeur borde la route. Baptiste s’est jeté dans la pente herbeuse à l’opposé. Son vélo gît dans la pente du côté de la route. Rapidement, il se redresse, traverse les pieds dans l’eau et remonte sur la chaussée. Le Look vintage semble intact, pas de dommage sur la bicyclette non plus. Miracle. Temporaire. Il fait sept degrés, Baba est trempé, en tenue de cycliste, l’hypothermie guette. Heureusement la voiture arrive au bout de quelques minutes pour secourir le naufragé.</p>
+      
+    </div>
+  </div>
+
+<div class="container right">
+  <div class="content">
+    <img src="chute_baba.jpg" style="width:100%">
+  </div>
+</div>
+  <div class="container left">
+    <div class="content">
+      <h2>L'enfer va être long...</h2>
+      <p>C’est donc le baptême du pavé pour le jeune mousse Corentin qui le remplace au pied levé. La moitié d’Hornaing en hors d’oeuvre, à 70km de l’arrivée… Manquant un peu de puissance mais pas de courage, on prend des relais et enchaîne les secteurs. Entre Tilloy et Sars-les-Rosières, nous roulons dans l’eau sans savoir où placer les roues. La route tournicote et joue avec le vent. Sur le tronçon «Marc Madiot», Corentin lâche un peu de terrain, les pavés entament leur travail d’usure. Mais ô surprise le reste de la troupe est arrêtée à l’issue de ce passage. Les crevaisons ne les ont pas épargnés non plus, deux fois pour Greg. La terre a rempli tout l’espace entre le pneu et les étriers de frein. Il dégage la motte à coups de démonte-pneu.</p>
+      
+    </div>
+  </div>
+
+<div class="container right">
+  <div class="content">
+    <img src="orchies_madiot.jpg" style="width:100%">
+  </div>
+</div>
+<div class="container right">
+  <div class="content">
+    <img src="crevaison_greg.jpg" style="width:100%">
+  </div>
+</div>
+<div class="container left">
+    <div class="content">
+      <p>On le sent bien, la route est encore longue jusqu’à Roubaix. Il faut avancer. Des bornes annoncent les secteurs et leurs noms évocateurs. Le «pavé de l’abattoir» succède au «chemin des prières». Tourner les jambes pour ne pas avoir froid. Baptiste est revenu en piste, et se lance avec Fred dans Mons-en-Pévèle comme dans un n-ième prologue. Les intervalles bitumés sont comme des silences sur une portée martelée par le roulement de tambour des pavés. On se compte, tout le monde est là, c’est reparti. Des averses. Passé Cysoing et le passage en hommage à Gilbert Duclos-Lassalle, on s’attend à nouveau, serrés dans un abri bus. Le doute commence à s’immiscer. Plus de 200km passés dans ces conditions, c’est déjà beau. Et si on coupait? Et si on abrégeait le supplice pour aller plus vite siroter quelques gorgées de bière au chaud? Pas envisageable pour David, puis Raph, et on se donne du courage comme cela jusqu’à motiver Goth, qui se ravise et fait râler les autres hamsters impatients de repartir! Nous voilà sept en tout avec Vince, Fred et Grégoire, lancés vers les derniers secteurs mais pas les moindres. Guche et Baptiste attendront longtemps dans cet abri bus, Greg et Corentin gagnent directement l’hôtel à Lille en voiture avant de venir les récupérer avec leurs v&eacutelos. </p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="route_mauvais_etat.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="paves_mons.jpg" style="width:100%">
+    </div>
+  </div>
+
+  <div class="container left">
+    <div class="content">
+      <h2>Les derni&egraveres pistes aux &eacutetoiles</h2>
+      <p>Voici Camphin-en-Pévèle puis le fameux Carrefour de l’Arbre, quatre puis cinq étoiles. Encore une fois, le battement appuyé des pavés s’imprime dans les poignets. Les avant-bras sont douloureux. En débouchant de ces derniers pièges, le jour décline, le soulagement grandit. Il y a un peu de fierté aussi, et l’impatience de rejoindre l’arrivée. En arrivant sur Hem, je redoute déjà le spleen des jours d’après. C’est peut-être la dernière fois que je les sentirai résonner dans mon corps, alors je me jette dessus comme dans les autres secteurs, en plein milieu, juste pour graver cette vibration une dernière fois dans ma mémoire. La procession cycliste continue, aimantée par le mythique vélodrome. Chacun a en tête le tour et demi à accomplir pour valider le défi. Mais le froid ne se fait pas oublier, à peine 5 à 6 degrés dans la bruine et la nuit noire.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="david_brouillard.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>A peine 242km et 14 heures après le départ...</h2>
+      <p>Quand nous arrivons enfin, nous savourons ces tours de piste. Raph embrasse la ligne que viendra couper Mathieu Van der Poel en vainqueur dans une semaine. Hélas, nous n’avons pas le luxe de nous éterniser ici. Nous fermons le portail derrière nous, anonymes pèlerins, et reprenons la route qui mène à l’hôtel en sinuant dans la métropole lilloise. L’histoire aurait dû s’arrêter ici, en racontant la délivrance qui nous emplit au bout d’une journée interminable, mais une dernière émotion s’est invitée dans le scénario. </p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="velodrome_nuit.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="velodrome_nuit_bis.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="velodrome_net.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>Roubaix sans une gamelle, est-ce vraiment Roubaix?</h2>
+      <p>Est-ce la fatigue, le manque d’attention ou le manque d’éclairage? Goth, ébloui par mon feu arrière, choisit de me dépasser. Cependant, un peu plus loin, il manque l’accès à la voie cyclable, un petit trottoir accroche sa roue arrière et c’est la chute. Mes freins ont démissionné. Je m’empale dans son vélo et passe par dessus. Le groupe s’arrête, se retourne, vient à notre aide. Le casque de Goth s’est brisé à l’impact, mais l’a bien protégé.  Les machines comme les pilotes souffrent de quelques égratignures. Une cocotte de son vélo est vrillée à 90 degrés. Ma chaîne est coincée. Les nerfs sont las. Heureusement, la voie des sages hamsters s'exprime. A deux pas scintille une célèbre enseigne qui scande: «venez comme vous êtes». Les prenant au mot, on s’y réfugie en attendant l’arrivée de nos anges gardiens, Baptiste et Guche, en voiture. Grelottants, maculés de boue, nos bécanes dégoulinantes appuyées derrière nos tabourets, on fait peine à voir. Après quelques frites, Goth reprend peu à peu ses esprits. Cela ne restera qu’une anecdote dans l’aventure du jour, et bientôt un sujet de conversation, une fois douchés, changés, et partis dîner à 23h passées, dans le centre ville de Lille où le fils de Grégoire nous a rejoint. On refait la journée, on refait le monde, tous ensemble dans la salle d’un kebab à réfléchir déjà à la prochaine <span style="font-style:italic">Classique des Hamsters.</span> Un point fait l'unanimité: la prochaine fois, on veut du soleil si possible!</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="casque_goth.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="chute_goth.jpg" style="width:100%">
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <img src="jambes_boue.jpg" style="width:100%">
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
